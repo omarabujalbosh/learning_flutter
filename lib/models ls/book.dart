@@ -1,15 +1,15 @@
 class Book {
-final int id;
-  final String title;
-  final String author;
-  final String description;
-  final String imageUrl;
-  final double rating;
+final String id;
+  String title;
+  final String authorId;
+  String description;
+  String imageUrl;
+  double rating;
 
   Book({
     required this.id,
     required this.title,
-    required this.author,
+    required this.authorId,
     required this.description,
     required this.imageUrl,
     required this.rating,
@@ -17,12 +17,13 @@ final int id;
   
   factory Book.formjson(Map<String,dynamic> josn){
    return Book(
-    id:josn['id']??0,
-    title: josn['title']?? 'none',
-    author: josn['author']??'none',
-    description: josn['desciption']?? 'none',
-    imageUrl: josn['imageUrl']?? 'none',
-    rating: josn['rating']??'none',
+    id:josn['id']??'',
+    title: josn['title']?? '',
+    authorId: josn['authorId']??'',
+    description: josn['description']?? '',
+    imageUrl: josn['imageUrl']?? '',
+    //التقيم ممكن يكون فيه اعشار 
+    rating: (josn['rating']??0.0).toDouble(),
    );
   }
 }
