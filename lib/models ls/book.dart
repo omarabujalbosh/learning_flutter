@@ -1,3 +1,4 @@
+import 'categories.dart';
 class Book {
 final String id;
   String title;
@@ -5,6 +6,7 @@ final String id;
   String description;
   String imageUrl;
   double rating;
+  Set<Category> categories;
 
   Book({
     required this.id,
@@ -13,6 +15,7 @@ final String id;
     required this.description,
     required this.imageUrl,
     required this.rating,
+    required this.categories,
   }); 
   
   factory Book.formjson(Map<String,dynamic> josn){
@@ -24,6 +27,9 @@ final String id;
     imageUrl: josn['imageUrl']?? '',
     //التقيم ممكن يكون فيه اعشار 
     rating: (josn['rating']??0.0).toDouble(),
+    categories: (josn['categories']as List?)
+    ?.map((item) => Category.formjson(item))
+    .toSet()??{},
    );
   }
 }

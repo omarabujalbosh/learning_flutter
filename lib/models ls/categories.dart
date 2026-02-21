@@ -1,7 +1,19 @@
-enum Category {
-  romance,
-  mystery,
-  fantasy,
-  horror,
-  history,
+class Category {
+  final String id;
+  final String name;
+  final String description;
+
+  Category({
+    required this.id,
+    required this.name,
+    required this.description,
+  });
+
+  factory Category.formjson(Map<String, dynamic> json) {
+    return Category(
+      id: json['id'] ?? "",
+      name: json['name'] ?? "",
+      description: json['description'] ?? "",
+    );
+  }
 }
