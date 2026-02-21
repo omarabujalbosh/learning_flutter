@@ -1,43 +1,33 @@
-class Person{
-String _name;
-int _id;
-int _year,_month,_day;
-DateTime _birthDate;
+import 'book.dart';
+class UserProfile{
+  String fullName;
+  String bio;
+  String imageUrl;//رابط صورة البرفايل 
+  List<Book>myWorks;//الكتب الخاصة بل مؤلف 
+  List<Book>myBooks;//الكتب التي يقرأها الالمستخدم
 
-Person(this._name,this._id,this._day,this._month,this._year)
-:_birthDate = DateTime(_year,_month,_day);
+ UserProfile({
+  required this.fullName,
+  required this.bio,
+  required this.imageUrl,
+  required this.myWorks,
+  required this.myBooks,
+ });
 
+ factory UserProfile.formjson(Map <String,dynamic>josn){
+  return UserProfile(
+  fullName: josn['fullName']??"",
+  bio:josn['bio']??"",
+  imageUrl: josn['imageUrl']??"",
+  //تحويل القائمة القادمة من السيرفر الى list من الكتب
+  myWorks:(josn['myWorks'] as List?)
+  ?.map((item) => Book.formjson(item))
+  .toList()??[],
+   //تحويل القائمة القادمة من السيرفر الى list من الكتب
+  myBooks: (josn['myBooks'] as List?)
+  ?.map((item)=>Book.formjson(item))
+  .toList()??[],
 
-int calculateAge(DateTime birthdate){
-DateTime today =DateTime.now();
-int age =today.year-birthdate.year;
-if(today.month<birthdate.month||(today.month == birthdate.month && today.day < birthdate.day)){
-age--;
-}
-return age;
-}
-String getname(){
-  return _name;
-}
-int getid(){
-  return _id;
-}
-DateTime getbirthdate(){
-  return _birthDate;
-}
-int getAge(){
-  return calculateAge( _birthDate);
-
-}
-void setname(String n){
-  _name=n;
-}
-void setId(int i){
-  _id =i;
-}
-void setbirthdate(DateTime bd){
-  _birthDate=bd;
-}
-
-
+ );
+ }
 }
