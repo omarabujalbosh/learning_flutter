@@ -13,7 +13,7 @@ final int id;
     required this.description,
     required this.imageUrl,
     required this.rating,
-  });
+  }); 
   
   factory Book.formjson(Map<String,dynamic> josn){
    return Book(
