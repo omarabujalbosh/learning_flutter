@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:io';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:image_picker/image_picker.dart';
 
 class SignUpPage extends StatefulWidget{
 SignUpPage({Key? key}):super(key:key);
@@ -13,26 +11,8 @@ _SignUpPage createState()=>_SignUpPage();
 }
 
 class _SignUpPage extends State<SignUpPage>{
-  File? _profileImge;
 
-  Future<void> _pickImage() async {
-  final ImagePicker picker = ImagePicker();
-  // بنطلب منه يروح يجيب صورة من المعرض (Gallery)
-  final XFile? pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-  if (pickedFile != null) {
-    setState(() {
-      // بنحول الـ XFile لـ File عادي عشان فلاتر يفهمه
-      _profileImge = File(pickedFile.path); 
-    });
-  }
-}
 final TextEditingController _Email =TextEditingController();
-final TextEditingController _username =TextEditingController();
-final TextEditingController _PassWord =TextEditingController();
-final TextEditingController _PassWord2 =TextEditingController();
-bool _showthepassword2=false;
-bool _showthepassword=false;
   @override
   Widget build(BuildContext context){
    return Scaffold(
@@ -179,7 +159,7 @@ bool _showthepassword=false;
         SizedBox(
           width: 325,
           child: TextFormField(
-          textAlign: TextAlign.right, // ليكون النص داخل الحقل من اليمين للشمال
+            controller:_Email,
           decoration: InputDecoration(
           hintText: 'you@example.com',
           hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
