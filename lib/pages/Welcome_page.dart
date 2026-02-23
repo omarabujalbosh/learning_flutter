@@ -1,9 +1,6 @@
-import 'dart:ffi';
-
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:learning_flutter/pages/login_as_adman_page.dart';
-import 'login_page.dart';
+import 'package:learning_flutter/pages/login_page.dart';
 import 'sign_up_page.dart';
 class HomePage extends StatefulWidget{
 HomePage({Key? key}): super(key:key);
@@ -67,7 +64,12 @@ Widget build(BuildContext context) {
                   elevation:10,
                   shadowColor:Colors.black,
                   ),
-                  onPressed: (){},
+                  onPressed: (){
+                     Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context)=>SignUpPage()),
+            );
+                  },
                 
                 child:Row(children: 
                 [
@@ -90,7 +92,12 @@ Widget build(BuildContext context) {
                 SizedBox(height: 30,),
                 Row(children:[
                   SizedBox(width: 50,),
-                  TextButton(onPressed: (){},
+                  TextButton(onPressed: (){
+                Navigator.push(
+                 context,
+                 MaterialPageRoute(builder: (context)=>LoginPage()),
+                );
+                  },
                     child: Text('سجل دخولك',
                 style: GoogleFonts.alexandria(
                   color:Color(0xff7C3AED),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:io';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 class SignUpPage extends StatefulWidget{
@@ -35,157 +36,207 @@ bool _showthepassword=false;
   @override
   Widget build(BuildContext context){
    return Scaffold(
+    backgroundColor: Colors.white,
     body:SafeArea(
-     child:SingleChildScrollView(
-     child: Container(
-        width: MediaQuery.of(context).size.width,
-        //decoration: InputDecoration(),
-        color: Colors.white,
-      child: Column(
-        children: [
-          const SizedBox(height: 50,),
-          Text('Sign Up',
-            style: GoogleFonts.rubik(
-              color: Color(0xff3F3838),
-              fontWeight: FontWeight.w900,
-              fontSize: 50,
-            ),
-          ),
-          const SizedBox(height: 10,),
-          GestureDetector(
-            onTap:_pickImage,
-            child: CircleAvatar(
-              radius: 90,
-              backgroundColor: Color(0xffEBEBEB),
+      child: SingleChildScrollView( 
+    physics: const ClampingScrollPhysics(),
+     child: Column(
+      children: [
+        SizedBox(height: 15,),
+        Row(
+          children: [
+            SizedBox(width: 300,),
+            Container(
+              height: 45,
+              width: 45,
+             decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [BoxShadow(
+               color: Colors.black.withOpacity(0.2),
+               spreadRadius:2,
+               blurRadius:2,
+               offset: Offset(0, 2),
 
-              backgroundImage: _profileImge!=null?
-              FileImage(_profileImge!):null,
-              
-              child: _profileImge == null 
-            ? Icon(Icons.camera_alt, size: 35, color: Colors.grey) // أيقونة الكاميرا لو فاضي
-            : null, // لو في صورة، ما بدنا أيقونة فوقها
-            
+              ),
+            ], 
+          ), 
+          child:IconButton(
+            icon:Icon(Icons.arrow_forward,
+            color: Color(0xff631EB8),
             ),
-          ),
-          Text('Choose your picture',
-            style: GoogleFonts.rubik(
-              color: Color(0xff656565),
-              fontSize: 12,
+            onPressed: () { 
+          Navigator.pop(context);
+            }
             ),
+          )
+          ],
+        ),
+        SizedBox(height: 45,),
+        Text(
+          'انضمّ الى عالمنا ',
+          style: GoogleFonts.alexandria(
+           fontSize: 40,
+           fontWeight: FontWeight.w900,
+           
           ),
-          const SizedBox(height: 20,),
-          SizedBox(
-          width: 280,
-          height: 55,
-          child:TextFormField(
-          controller: _Email,
-          keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
-            hintText: 'Email',
-            filled:true,
-            fillColor: Color(0xffEBEBEB),
-            border:OutlineInputBorder(
-             borderRadius: BorderRadius.circular(50)
+        ),
+        SizedBox(height:50,),
+        SizedBox(
+        width: 350,
+        height: 60,
+        child:OutlinedButton(onPressed: (){},
+        style: OutlinedButton.styleFrom(
+          side: BorderSide(
+            color: const Color.fromARGB(153, 197, 194, 194),
+            //width: 2.0,
+          ),
+        ),
+        child:Row(
+          children: [
+            SizedBox(width: 25,),
+            Icon(
+              FontAwesomeIcons.google,
+              color: Colors.black,
+              size: 24,
             ),
-          ),
-          
-        )
+            SizedBox(width: 10,),
+            Text('Google ',
+            style: GoogleFonts.alexandria(
+             color: Colors.black,
+             fontSize: 20,
+             fontWeight: FontWeight.w600,
+            ),
+            ),
+            Text('متابعة باستخدام',
+            style: GoogleFonts.alexandria(
+             color: Colors.black,
+             fontSize: 20,
+             fontWeight: FontWeight.w600,
+            ),
+            ),
+          ],
+        ),
+        ),
         ),
         SizedBox(height: 20,),
         SizedBox(
-          width: 280,
-          height: 55,
-          child:TextFormField(
-          controller: _username,
-          keyboardType: TextInputType.emailAddress,
+        width: 350,
+        height: 60,
+        child:OutlinedButton(onPressed: (){},
+         style: OutlinedButton.styleFrom(
+          side: BorderSide(
+            color: const Color.fromARGB(153, 197, 194, 194),
+            //width: 2.0,
+          ),
+        ),
+        child:Row(
+          children: [
+            SizedBox(width: 25,),
+            Icon(
+              FontAwesomeIcons.apple,
+              color: Colors.black,
+              size: 30,
+            ),
+            SizedBox(width: 10,),
+            Text('Apple ',
+            style: GoogleFonts.alexandria(
+             color: Colors.black,
+             fontSize: 20,
+             fontWeight: FontWeight.w600,
+            ),
+            ),
+            Text('متابعة باستخدام',
+            style: GoogleFonts.alexandria(
+             color: Colors.black,
+             fontSize: 20,
+             fontWeight: FontWeight.w600,
+            ),
+            ),
+          ],
+        ),
+        ),
+        ),
+        SizedBox(height: 30,),
+        Row(
+          children: [
+             Expanded(child: Divider(thickness: 1, endIndent: 10,indent:20)), // الخط الأول
+             Text("أو",style: TextStyle(color: Colors.grey,fontSize: 17),),                                           // الكلمة بالمنتصف
+             Expanded(child:Divider(thickness: 1, indent: 10,endIndent: 20,)),    // الخط الثاني
+            ],
+         ),
+        SizedBox(height: 30,),
+        Row(
+          children: [
+            SizedBox(width: 240,),
+            Text('البريد الالكتروني',style: GoogleFonts.alexandria(
+              fontWeight: FontWeight.w500,
+              color:  Color.fromARGB(255, 124, 123, 123),
+            ),)
+          ],
+        ),
+        SizedBox(height: 10,),
+        SizedBox(
+          width: 325,
+          child: TextFormField(
+          textAlign: TextAlign.right, // ليكون النص داخل الحقل من اليمين للشمال
           decoration: InputDecoration(
-            hintText: 'username',
-            filled:true,
-            fillColor: Color(0xffEBEBEB),
-            border:OutlineInputBorder(
-             borderRadius: BorderRadius.circular(50)
-            ),
-          ),
-          
-        )
+          hintText: 'you@example.com',
+          hintStyle: TextStyle(color: Colors.grey.withOpacity(0.5)),
+    
+           // التنسيق الافتراضي للخط (Underline)
+          enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey.shade300),
         ),
-        const SizedBox(height: 20,),
-        SizedBox(
-          width: 280,
-          height: 55,
-          child: TextFormField(
-            controller: _PassWord,
-            obscureText: _showthepassword,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              hintText: 'Password',
-              filled:true,
-              fillColor: Color(0xffEBEBEB),
-              border: OutlineInputBorder(
-               borderRadius: BorderRadius.circular(50),
-              ),
-              suffixIcon: IconButton(onPressed: (){
-                setState(() {
-                  _showthepassword=!_showthepassword;
-                });
-              },
-               icon:Icon(
-                 _showthepassword?Icons.visibility_off:Icons.visibility,
-                 color: Color(0xff514EB8),
-               ),
-               ),
-            ),
+    
+          // التنسيق عند الضغط على الحقل (Focus)
+          focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: const Color.fromARGB(255, 100, 100, 100), width: 2),
           ),
-        ),
-        const SizedBox(height: 20,),
-        SizedBox(
-          width: 280,
-          height: 55,
-          child: TextFormField(
-            controller: _PassWord2,
-            obscureText: _showthepassword2,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              hintText: 'Password',
-              filled:true,
-              fillColor: Color(0xffEBEBEB),
-              border: OutlineInputBorder(
-               borderRadius: BorderRadius.circular(50),
-              ),
-              suffixIcon: IconButton(onPressed: (){
-                setState(() {
-                  _showthepassword2=!_showthepassword2;
-                });
-              },
-               icon:Icon(
-                 _showthepassword2?Icons.visibility_off:Icons.visibility,
-                 color: Color(0xff514EB8),
-               ),
-               ),
-            ),
-          ),
-        ),
-        const SizedBox(height: 25,),
-        SizedBox(
-          width: 200,
-          height: 50,
-          child: ElevatedButton(onPressed: (){
-           
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xff514EB8),
-            foregroundColor:Colors.white,
-          ),
-          child: Text('Sign Up',
-          style:TextStyle(
-            fontWeight: FontWeight.w800,
-          ),
-          ),
-          ),
-        ),
-        const SizedBox(height: 50,)
-        ],
       ),
+    ),
+        ),
+        SizedBox(height: 70,),
+       SizedBox(
+        width: 300,
+        height: 60,
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xff631EB8),
+          ),
+        onPressed: () {  },
+        child: Text('متابعة',
+        style: GoogleFonts.alexandria(
+           color: Colors.white,
+           fontSize: 20,
+           fontWeight: FontWeight.w500,
+        ),
+        ),
+        ),
+       ),
+       SizedBox(height: 15,),
+       Row(
+        children: [
+          SizedBox(width: 35,),
+          TextButton(onPressed: (){},
+          style:TextButton.styleFrom(
+            padding: EdgeInsets.zero,
+          ),
+          child: Text('شروط الخدمة و سياسة الخصوصية ',
+          style: GoogleFonts.alexandria(
+            fontSize: 10,
+            fontWeight: FontWeight.w500,
+          ),
+          )),
+       Text('بمتابعتك، أنت توافق على',
+       style:GoogleFonts.alexandria(
+        fontSize: 10,
+        fontWeight: FontWeight.w300,
+       ),
+       ),
+        ],
+       ),
+      ],
      ),
     ),
     ),
