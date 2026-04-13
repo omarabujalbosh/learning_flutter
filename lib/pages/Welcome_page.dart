@@ -105,7 +105,7 @@ Widget build(BuildContext context) {
                 ),
                     ),
                 ),
-                Text('لديك حساب بلفعل؟',
+                Text('لديك  بلفعل؟',
                 style: GoogleFonts.alexandria(
                   color:Colors.black,
                   fontWeight: FontWeight.w800,

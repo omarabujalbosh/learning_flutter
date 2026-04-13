@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:learning_flutter/pages/sign_up_page2.dart';
 
 class SignUpPage extends StatefulWidget{
 SignUpPage({Key? key}):super(key:key);
@@ -103,7 +104,9 @@ final TextEditingController _Email =TextEditingController();
         SizedBox(
         width: 350,
         height: 60,
-        child:OutlinedButton(onPressed: (){},
+        child:OutlinedButton(onPressed: (){
+          
+        },
          style: OutlinedButton.styleFrom(
           side: BorderSide(
             color: const Color.fromARGB(153, 197, 194, 194),
@@ -184,7 +187,12 @@ final TextEditingController _Email =TextEditingController();
           style: ElevatedButton.styleFrom(
             backgroundColor: Color(0xff631EB8),
           ),
-        onPressed: () {  },
+        onPressed: () { 
+           Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context)=>SignUpPage2()),
+           );
+         },
         child: Text('متابعة',
         style: GoogleFonts.alexandria(
            color: Colors.white,
